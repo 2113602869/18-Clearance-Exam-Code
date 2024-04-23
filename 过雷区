@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int main(){
+	int t,n,m;
+	cin>>t;
+	while (t--&&cin>>n>>m){
+		char s[101][101];
+		for(int i=0;i<n;++i)
+		    for(int j=0;j<m;++j)
+		        cin>>s[i][j];
+		int pos=0;
+		while(s[0][pos]!='!') ++pos;
+		int i;
+		for(i=1;i<n;++i){
+			if(pos>0&&s[i][pos-1]=='!') --pos;
+			else if(pos<m-1&&s[i][pos+1]=='!') ++pos;
+			else if(s[i][pos]!='!') break;
+		}	
+		cout<<((i<n)?"No\n":"Yes\n") ;
+	}
+}
