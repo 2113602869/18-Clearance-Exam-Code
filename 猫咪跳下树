@@ -1,0 +1,35 @@
+#include<iostream>
+#include<sstream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+
+bool cmp(const string &a, const string &b){
+    return a < b;
+}
+
+int main(){
+    string s, word;
+    vector<string> words;
+    getline(cin, s);
+    istringstream ss(s);
+    
+    // 读取所有单词并存储在vector中
+    while(ss >> word) {
+        words.push_back(word);
+    }
+    
+    // 对单词进行字典序排序
+    sort(words.begin(), words.end(), cmp);
+    
+    // 输出排序后的句子，单词之间用空格隔开
+    for(size_t i = 0; i < words.size(); ++i) {
+        cout << words[i];
+        if(i != words.size() - 1) {
+            cout << " ";
+        }
+    }
+    cout << endl;
+    
+    return 0;
+}
