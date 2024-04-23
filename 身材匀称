@@ -1,0 +1,27 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main() {
+    string gender;
+    int height;
+    double weight, cri;
+
+    while (cin >> gender >> height >> weight) {
+        if (gender == "man") {
+            cri = (height - 100) * 0.9;
+        } else {
+            cri = (height - 100) * 0.9 - 2.0; // 注意这里的括号位置
+        }
+
+        if (weight > cri + 10) {
+            cout << "heavier" << endl;
+        } else if (weight < cri - 10) {
+            cout << "lighter" << endl;
+        } else {
+            cout << "perfect" << endl;
+        }
+    }
+
+    return 0;
+}
