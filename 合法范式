@@ -1,0 +1,38 @@
+#include<iostream>
+#include<algorithm>
+#include<string> 
+using namespace std;
+class Array{
+	char num[63];
+	int sz;
+public:
+	void push_back(char x){num[sz++]=x;}
+	void pop_back(){sz--;}
+	int size(){return sz;}
+	char back(){return num[sz-1];}
+	void init(){sz=0;}
+};
+bool isValid(const string& s){
+	Array a;
+	a.init();
+	for(int i=0;i<s.length();++i){
+		switch(s[i]){
+			case '(': case '{':
+			case '[': a.push_back(s[i]);break;
+			case ')':if(a.size()>0&&a.back()=='(') a.pop_back();
+			         else return false;
+			         break;
+			case ']':if(a.size()>0&&a.back()=='[') a.pop_back();
+			         else return false;
+			         break;
+			case '}':if(a.size()>0&&a.back()=='{') a.pop_back();
+			         else return false;
+					 break;		
+		}
+	}
+	return a.size()==0;
+} 
+int main(){
+	for(string s;cin>>s; )
+	    cout<<(isValid(s)?"YES\n":"NO\n");
+}
