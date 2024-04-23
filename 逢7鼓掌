@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+bool has7(int x){
+	if(x%7==0) return true;
+	while(x){
+		if(x%10==7) return true;
+		x/=10;
+	}
+	return false;
+}
+int main(){
+	for(int n,m,a;cin>>n>>m>>a; ){
+		int cnt=0;
+		for(int i=0;i<a;i++)
+		    cnt+=has7(m+i*n);
+	    cout<<cnt<<endl;
+	}
+}
