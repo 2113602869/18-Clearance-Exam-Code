@@ -1,0 +1,29 @@
+#include<iostream>
+#include<string> 
+#include<sstream>
+#include<cctype>
+using namespace std;
+int main(){
+string words[500]; 
+    string s;
+    getline(cin,s);
+    for(int i=0;i<s.length();i++) s[i]-tolower(s[i]);
+    istringstream sin(s);
+    string t;
+    int n=0;
+    while( sin>>t) words[n++]=t;
+    for(string s; getline(cin,s);){
+        int cnt=0;
+        for(int i=0; i<s.length();i++)
+            s[i]=tolower(s[i]);
+        istringstream sin(s);
+        for(string t; sin>>t;){
+            int p;
+            for( p=0;p<n;++p)
+                if(words[p]==t){cnt +=3;break;}
+            if(p==n) cnt += t.length()+1;
+        }
+        cout << cnt<<"\n";
+    }
+}
+
